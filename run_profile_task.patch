@@ -1,0 +1,23 @@
+From 7dcea4c8769e4f12197646922f399a699c3e2a5a Mon Sep 17 00:00:00 2001
+From: Xiang Zhang <angwerzx@126.com>
+Date: Fri, 8 Sep 2017 09:56:06 +0800
+Subject: [PATCH] bpo-31379: Added $(RUNSHARED) to run_profile_task (#3422)
+
+---
+ Makefile.pre.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.pre.in b/Makefile.pre.in
+index d0bb4c1d0e85..16afd9cebe4f 100644
+--- a/Makefile.pre.in
++++ b/Makefile.pre.in
+@@ -428,7 +428,7 @@ build_all_generate_profile:
+ 
+ run_profile_task:
+ 	: # FIXME: can't run for a cross build
+-	$(LLVM_PROF_FILE) ./$(BUILDPYTHON) $(PROFILE_TASK) || true
++	$(LLVM_PROF_FILE) $(RUNSHARED) ./$(BUILDPYTHON) $(PROFILE_TASK) || true
+ 
+ build_all_merge_profile:
+ 	$(LLVM_PROF_MERGER)
+
