@@ -82,7 +82,7 @@ RUN set -ex \
 			| sort -u \
 			| awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
 	)" \
-	&& apk add --virtual .python-rundeps $runDeps \
+	&& apk add --virtual .python-rundeps libc6-compat $runDeps \
 	&& apk del .build-deps \
 	\
 	&& find /usr/local -depth \
